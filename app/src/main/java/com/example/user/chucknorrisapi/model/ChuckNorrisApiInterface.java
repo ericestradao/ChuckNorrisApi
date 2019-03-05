@@ -8,4 +8,10 @@ public interface ChuckNorrisApiInterface {
     @GET("random")
     Call<ChuckNorrisPojo> getJokes ();
 
+    @GET("random?")
+    Call<ChuckNorrisPojo> getCharacter (@Query("firstName") String fistName,
+                                        @Query("lastName") String lastName);
+    @GET("random/20")
+    Call<NeverEndingPojo> getList ();
+
 }

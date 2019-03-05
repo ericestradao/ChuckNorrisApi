@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.user.chucknorrisapi.R;
 import com.example.user.chucknorrisapi.model.ChuckNorrisPojo;
+import com.example.user.chucknorrisapi.model.NeverEndingPojo;
 import com.example.user.chucknorrisapi.presenter.Presenter;
 
 import butterknife.BindView;
@@ -68,5 +69,5 @@ public class TextInputFragment extends Fragment implements ViewContract{
     }
 
     @Override
-    public void populateListJoke(ChuckNorrisPojo chuckNorrisPojo) {}
+    public void populateListJoke(NeverEndingPojo neverEndingPojo) {}
 }

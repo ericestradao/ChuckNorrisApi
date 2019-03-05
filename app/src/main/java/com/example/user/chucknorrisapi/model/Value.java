@@ -39,5 +39,4 @@ public class Value {
     public void setCategories(List<Object> categories) {
         this.categories = categories;
     }
-
 }

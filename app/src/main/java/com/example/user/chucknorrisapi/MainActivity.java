@@ -3,6 +3,7 @@ package com.example.user.chucknorrisapi;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +12,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.user.chucknorrisapi.model.ChuckNorrisPojo;
-import com.example.user.chucknorrisapi.model.NeverEndingJokeApi;
+import com.example.user.chucknorrisapi.model.NeverEndingPojo;
 import com.example.user.chucknorrisapi.presenter.Presenter;
 import com.example.user.chucknorrisapi.view.Adapter;
 import com.example.user.chucknorrisapi.view.NeverEndingFragment;
@@ -79,12 +80,13 @@ public class MainActivity extends AppCompatActivity implements ViewContract {
     public void populateCharacter(ChuckNorrisPojo chuckNorrisPojo) { }
 
     @Override
-    public void populateListJoke(ChuckNorrisPojo chuckNorrisPojo) {
-        adapter = new Adapter(chuckNorrisPojo, this);
+    public void populateListJoke(NeverEndingPojo neverEndingPojo) {
+        adapter = new Adapter(neverEndingPojo, this);
         recyclerView = findViewById(R.id.rv_joke_list);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
     }
 }

@@ -2,11 +2,10 @@ package com.example.user.chucknorrisapi.presenter;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.example.user.chucknorrisapi.model.ChangeCharacterApi;
 import com.example.user.chucknorrisapi.model.ChuckNorrisApiInterface;
 import com.example.user.chucknorrisapi.model.ChuckNorrisPojo;
 import com.example.user.chucknorrisapi.model.ConnectApi;
-import com.example.user.chucknorrisapi.model.NeverEndingJokeApi;
+import com.example.user.chucknorrisapi.model.NeverEndingPojo;
 import com.example.user.chucknorrisapi.model.Value;
 import com.example.user.chucknorrisapi.view.ViewContract;
 
@@ -46,8 +45,8 @@ public class Presenter implements PresenterContract{
     @Override
     public void getCharacter(String[] firstName, String[] lastName) {
         Retrofit retrofit = ConnectApi.getInstance().initRetrofit();
-        ChangeCharacterApi changeCharacterApi = retrofit.create(ChangeCharacterApi.class);
-        changeCharacterApi.getCharacter(firstName[0], lastName[1]).enqueue(new Callback<ChuckNorrisPojo>() {
+        ChuckNorrisApiInterface chuckNorrisApiInterface = retrofit.create(ChuckNorrisApiInterface.class);
+        chuckNorrisApiInterface.getCharacter(firstName[0], lastName[1]).enqueue(new Callback<ChuckNorrisPojo>() {
             @Override
             public void onResponse(Call<ChuckNorrisPojo> call, Response<ChuckNorrisPojo> response) {
                 viewContract.populateCharacter(response.body());
@@ -63,16 +62,16 @@ public class Presenter implements PresenterContract{
     @Override
     public void getListJoke() {
     Retrofit retrofit = ConnectApi.getInstance().initRetrofit();
-    NeverEndingJokeApi neverEndingJokeApi = retrofit.create(NeverEndingJokeApi.class);
-    neverEndingJokeApi.getList("20").enqueue(new Callback<ChuckNorrisPojo>() {
+    ChuckNorrisApiInterface chuckNorrisApiInterface = retrofit.create(ChuckNorrisApiInterface.class);
+    chuckNorrisApiInterface.getList().enqueue(new Callback<NeverEndingPojo>() {
         @Override
-        public void onResponse(Call<ChuckNorrisPojo> call, Response<ChuckNorrisPojo> response) {
+        public void onResponse(Call<NeverEndingPojo> call, Response<NeverEndingPojo> response) {
             viewContract.populateListJoke(response.body());
 
         }
 
         @Override
-        public void onFailure(Call<ChuckNorrisPojo> call, Throwable t) {
+        public void onFailure(Call<NeverEndingPojo> call, Throwable t) {
 
         }
     });
